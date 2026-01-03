@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HR System Backend - Implementation Plan</title>
+        <style>
+            body {
+                font-family: "Segoe UI", Calibri, sans-serif;
+                margin: 40px;
+                line-height: 1.7;
+                background: #fafafa;
+            }
+            h1 {
+                color: #1a237e;
+                border-bottom: 3px solid #3f51b5;
+                padding-bottom: 15px;
+            }
+            h2 {
+                color: #303f9f;
+                margin-top: 40px;
+                background: #e8eaf6;
+                padding: 12px 18px;
+                border-radius: 8px;
+            }
+            .task-card {
+                background: white;
+                padding: 20px;
+                margin: 20px 0;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                border-left: 5px solid #3f51b5;
+            }
+            .task-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+            .task-number {
+                background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+                color: white;
+                padding: 8px 15px;
+                border-radius: 20px;
+                font-weight: bold;
+                margin-right: 15px;
+            }
+            .task-title {
+                font-size: 18px;
+                font-weight: bold;
+                color: #1a237e;
+            }
+            .task-description {
+                background: #f5f5f5;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+                border-left: 3px solid #7986cb;
+            }
+            .task-description p {
+                margin: 0;
+                color: #555;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 15px 0;
+                background: white;
+            }
+            th,
+            td {
+                border: 1px solid #e0e0e0;
+                padding: 10px;
+                text-align: left;
+                font-size: 14px;
+            }
+            th {
+                background: linear-gradient(135deg, #7c4dff, #651fff);
+                color: white;
+            }
+            tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+            tr:hover {
+                background-color: #e8eaf6;
+            }
+            code {
+                background-color: #fff3e0;
+                padding: 3px 8px;
+                border-radius: 4px;
+                font-family: "Consolas", monospace;
+                color: #e65100;
+                font-size: 13px;
+            }
+            .db-section {
+                background: #f3e5f5;
+                padding: 15px;
+                border-radius: 8px;
+                margin: 10px 0;
+            }
+            .api-section {
+                background: #e3f2fd;
+                padding: 15px;
+                border-radius: 8px;
+                margin: 10px 0;
+            }
+            .web-section {
+                background: #fff8e1;
+                padding: 15px;
+                border-radius: 8px;
+                margin: 10px 0;
+            }
+            .section-label {
+                font-weight: bold;
+                color: #7b1fa2;
+                margin-bottom: 10px;
+                display: block;
+            }
+            .api-label {
+                color: #1565c0;
+            }
+            .web-label {
+                color: #f57c00;
+            }
+            .ready {
+                background: linear-gradient(135deg, #4caf50, #81c784);
+                color: white;
+                padding: 30px;
+                text-align: center;
+                margin: 40px 0;
+                border-radius: 15px;
+            }
+            .ready h2 {
+                color: white;
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+            .dependency-note {
+                background: #e8f5e9;
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin: 10px 0;
+                font-size: 14px;
+                color: #2e7d32;
+            }
+            .phase-header {
+                background: white;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🏢 HR System Backend - Implementation Plan</h1>
+
+        <div class="phase-header">
+            <h3>📋 Project Overview</h3>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>Project</td>
+                    <td>HR Mobile App + Admin Dashboard</td>
+                </tr>
+                <tr>
+                    <td>Backend</td>
+                    <td>Laravel</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td>RESTful JSON APIs for Employees</td>
+                </tr>
+                <tr>
+                    <td>Dashboard</td>
+                    <td>Laravel + Blade/Livewire for Admins</td>
+                </tr>
+            </table>
+        </div>
+
+        <hr />
+
+        <!-- Phase 1 -->
+        <h2>📦 Phase 1: Project Setup</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 1.1</span>
+                <span class="task-title">Initialize Laravel Project</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Create a new Laravel project
+                    and configure the basic settings including database
+                    connection and environment variables.
+                </p>
+            </div>
+            <ol>
+                <li>
+                    <code
+                        >composer create-project laravel/laravel hr-system</code
+                    >
+                </li>
+                <li><code>cd hr-system</code></li>
+                <li><code>php artisan key:generate</code></li>
+                <li>Configure <code>.env</code> with database credentials</li>
+            </ol>
+        </div>
+
+        <hr />
+
+        <!-- Phase 2 -->
+        <h2>📦 Phase 2: Database Design & Migrations</h2>
+
+        <div class="dependency-note">
+            ⚠️ <strong>Important:</strong> Create tables in this exact order
+            because of foreign key dependencies.
+        </div>
+
+        <!-- Task 2.1 -->
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 2.1</span>
+                <span class="task-title"
+                    >Create Lookup Tables (No Dependencies)</span
+                >
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> These are independent lookup
+                    tables that don't reference other tables. They must be
+                    created first because other tables will reference them.
+                </p>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ nationalities</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>json</td>
+                        <td>Translatable name</td>
+                        <td><code>{"ar": "سعودي", "en": "Saudi"}</code></td>
+                    </tr>
+                    <tr>
+                        <td>country_code</td>
+                        <td>string(3)</td>
+                        <td>ISO country code</td>
+                        <td>"SA"</td>
+                    </tr>
+                    <tr>
+                        <td>is_active</td>
+                        <td>boolean</td>
+                        <td>Active or not</td>
+                        <td>true</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ positions</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>json</td>
+                        <td>Translatable name</td>
+                        <td><code>{"ar": "مهندس", "en": "Engineer"}</code></td>
+                    </tr>
+                    <tr>
+                        <td>is_active</td>
+                        <td>boolean</td>
+                        <td>Active or not</td>
+                        <td>true</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ projects</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>string(150)</td>
+                        <td>Project name</td>
+                        <td>"Building A"</td>
+                    </tr>
+                    <tr>
+                        <td>code</td>
+                        <td>string(20)</td>
+                        <td>Unique project code</td>
+                        <td>"PRJ001"</td>
+                    </tr>
+                    <tr>
+                        <td>start_date</td>
+                        <td>date</td>
+                        <td>Start date</td>
+                        <td>"2024-01-01"</td>
+                    </tr>
+                    <tr>
+                        <td>end_date</td>
+                        <td>date</td>
+                        <td>Expected end</td>
+                        <td>"2024-12-31"</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>active, completed, cancelled</td>
+                        <td>"active"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ work_locations</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>string(150)</td>
+                        <td>Location name</td>
+                        <td>"Head Office - Riyadh"</td>
+                    </tr>
+                    <tr>
+                        <td>address</td>
+                        <td>text</td>
+                        <td>Full address</td>
+                        <td>"King Fahd Road, Riyadh"</td>
+                    </tr>
+                    <tr>
+                        <td>latitude</td>
+                        <td>decimal(10,8)</td>
+                        <td>GPS latitude</td>
+                        <td>24.7136</td>
+                    </tr>
+                    <tr>
+                        <td>longitude</td>
+                        <td>decimal(11,8)</td>
+                        <td>GPS longitude</td>
+                        <td>46.6753</td>
+                    </tr>
+                    <tr>
+                        <td>radius</td>
+                        <td>int</td>
+                        <td>Check-in radius in meters</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>is_active</td>
+                        <td>boolean</td>
+                        <td>Active or not</td>
+                        <td>true</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ work_schedules</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>string(100)</td>
+                        <td>Schedule name</td>
+                        <td>"Morning Shift"</td>
+                    </tr>
+                    <tr>
+                        <td>start_time</td>
+                        <td>time</td>
+                        <td>Work start time</td>
+                        <td>"08:00:00"</td>
+                    </tr>
+                    <tr>
+                        <td>end_time</td>
+                        <td>time</td>
+                        <td>Work end time</td>
+                        <td>"17:00:00"</td>
+                    </tr>
+                    <tr>
+                        <td>grace_period</td>
+                        <td>int</td>
+                        <td>Late grace in minutes</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>break_start</td>
+                        <td>time</td>
+                        <td>Break start</td>
+                        <td>"12:00:00"</td>
+                    </tr>
+                    <tr>
+                        <td>break_end</td>
+                        <td>time</td>
+                        <td>Break end</td>
+                        <td>"13:00:00"</td>
+                    </tr>
+                    <tr>
+                        <td>working_days</td>
+                        <td>json</td>
+                        <td>Array of working days</td>
+                        <td>[0,1,2,3,4]</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ leave_types</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>json</td>
+                        <td>Translatable name</td>
+                        <td>
+                            <code>{"ar": "إجازة سنوية", "en": "Annual"}</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>days_allowed</td>
+                        <td>int</td>
+                        <td>Max days per year</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>is_paid</td>
+                        <td>boolean</td>
+                        <td>Paid leave or not</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>requires_attachment</td>
+                        <td>boolean</td>
+                        <td>Needs document</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>is_active</td>
+                        <td>boolean</td>
+                        <td>Active or not</td>
+                        <td>true</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Task 2.2 -->
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 2.2</span>
+                <span class="task-title">Create Admins & Roles Tables</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Admins are the dashboard users
+                    who manage the HR system. Each admin has a role with
+                    specific permissions stored as JSON array.
+                </p>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ admins</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>string(100)</td>
+                        <td>Admin full name</td>
+                        <td>"Ahmed Mohamed"</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td>string(150)</td>
+                        <td>Unique, for login</td>
+                        <td>"admin@company.com"</td>
+                    </tr>
+                    <tr>
+                        <td>password</td>
+                        <td>string</td>
+                        <td>Hashed password</td>
+                        <td>"$2y$10$..."</td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td>string(20)</td>
+                        <td>Phone number</td>
+                        <td>"+966501234567"</td>
+                    </tr>
+                    <tr>
+                        <td>role_id</td>
+                        <td>bigint</td>
+                        <td>FK → roles</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>is_active</td>
+                        <td>boolean</td>
+                        <td>Can login or not</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>last_login_at</td>
+                        <td>datetime</td>
+                        <td>Last login time</td>
+                        <td>"2024-01-15 09:30"</td>
+                    </tr>
+                    <tr>
+                        <td>created_at</td>
+                        <td>timestamp</td>
+                        <td>Created time</td>
+                        <td>auto</td>
+                    </tr>
+                    <tr>
+                        <td>updated_at</td>
+                        <td>timestamp</td>
+                        <td>Updated time</td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ roles</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>role</td>
+                        <td>string</td>
+                        <td>Unique role name</td>
+                        <td>"Super Admin"</td>
+                    </tr>
+                    <tr>
+                        <td>permissions</td>
+                        <td>json</td>
+                        <td>Array of permissions</td>
+                        <td>
+                            <code
+                                >["employees.create", "employees.edit",
+                                "requests.approve"]</code
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>created_at</td>
+                        <td>timestamp</td>
+                        <td>Created time</td>
+                        <td>auto</td>
+                    </tr>
+                    <tr>
+                        <td>updated_at</td>
+                        <td>timestamp</td>
+                        <td>Updated time</td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Task 2.3 -->
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 2.3</span>
+                <span class="task-title">Create Departments Table</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Departments table needs to be
+                    created before Employees because employees belong to
+                    departments. The manager_id will reference employees table
+                    (nullable initially, add constraint after employees table is
+                    created).
+                </p>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ departments</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>json</td>
+                        <td>Translatable name</td>
+                        <td>
+                            <code>{"ar": "الموارد البشرية", "en": "HR"}</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>manager_id</td>
+                        <td>bigint (nullable)</td>
+                        <td>FK → employees</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>is_active</td>
+                        <td>boolean</td>
+                        <td>Active or not</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>created_at</td>
+                        <td>timestamp</td>
+                        <td>Created time</td>
+                        <td>auto</td>
+                    </tr>
+                    <tr>
+                        <td>updated_at</td>
+                        <td>timestamp</td>
+                        <td>Updated time</td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Task 2.4 -->
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 2.4</span>
+                <span class="task-title">Create Employees Table</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Main employee table that
+                    references multiple lookup tables. This is the core table
+                    that other feature tables will depend on.
+                </p>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ employees</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_number</td>
+                        <td>string(20)</td>
+                        <td>Unique employee ID</td>
+                        <td>"EMP001"</td>
+                    </tr>
+                    <tr>
+                        <td>first_name</td>
+                        <td>string(50)</td>
+                        <td>First name</td>
+                        <td>"محمد"</td>
+                    </tr>
+                    <tr>
+                        <td>last_name</td>
+                        <td>string(50)</td>
+                        <td>Last name</td>
+                        <td>"أحمد"</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td>string(150)</td>
+                        <td>Unique, for login</td>
+                        <td>"m.ahmed@company.com"</td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td>string(20)</td>
+                        <td>For OTP</td>
+                        <td>"+966501234567"</td>
+                    </tr>
+                    <tr>
+                        <td>password</td>
+                        <td>string</td>
+                        <td>Hashed password</td>
+                        <td>"$2y$10$..."</td>
+                    </tr>
+                    <tr>
+                        <td>pin</td>
+                        <td>string</td>
+                        <td>4-digit PIN (hashed)</td>
+                        <td>"$2y$10$..."</td>
+                    </tr>
+                    <tr>
+                        <td>profile_image</td>
+                        <td>string</td>
+                        <td>Photo path</td>
+                        <td>"employees/1/photo.jpg"</td>
+                    </tr>
+                    <tr>
+                        <td>gender</td>
+                        <td>enum</td>
+                        <td>male, female</td>
+                        <td>"male"</td>
+                    </tr>
+                    <tr>
+                        <td>date_of_birth</td>
+                        <td>date</td>
+                        <td>Birth date</td>
+                        <td>"1990-05-15"</td>
+                    </tr>
+                    <tr>
+                        <td>marital_status</td>
+                        <td>enum</td>
+                        <td>single, married, divorced</td>
+                        <td>"married"</td>
+                    </tr>
+                    <tr>
+                        <td>nationality_id</td>
+                        <td>bigint</td>
+                        <td>FK → nationalities</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>department_id</td>
+                        <td>bigint</td>
+                        <td>FK → departments</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>position_id</td>
+                        <td>bigint</td>
+                        <td>FK → positions</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>project_id</td>
+                        <td>bigint (nullable)</td>
+                        <td>FK → projects</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>manager_id</td>
+                        <td>bigint (nullable)</td>
+                        <td>FK → employees (self)</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>work_location_id</td>
+                        <td>bigint</td>
+                        <td>FK → work_locations</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>work_schedule_id</td>
+                        <td>bigint</td>
+                        <td>FK → work_schedules</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>basic_salary</td>
+                        <td>decimal(10,2)</td>
+                        <td>Monthly salary</td>
+                        <td>8500.00</td>
+                    </tr>
+                    <tr>
+                        <td>hire_date</td>
+                        <td>date</td>
+                        <td>Start date</td>
+                        <td>"2023-06-01"</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>active, inactive, terminated</td>
+                        <td>"active"</td>
+                    </tr>
+                    <tr>
+                        <td>locale</td>
+                        <td>string(5)</td>
+                        <td>ar, en</td>
+                        <td>"ar"</td>
+                    </tr>
+                    <tr>
+                        <td>created_at</td>
+                        <td>timestamp</td>
+                        <td>Created time</td>
+                        <td>auto</td>
+                    </tr>
+                    <tr>
+                        <td>updated_at</td>
+                        <td>timestamp</td>
+                        <td>Updated time</td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Task 2.5 -->
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 2.5</span>
+                <span class="task-title">Create Employee-Dependent Tables</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> These tables reference the
+                    employees table, so they must be created after employees
+                    table exists. They are the core feature tables.
+                </p>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ attendance_records</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td>date</td>
+                        <td>Attendance date</td>
+                        <td>"2024-01-15"</td>
+                    </tr>
+                    <tr>
+                        <td>check_in_time</td>
+                        <td>datetime</td>
+                        <td>Check-in timestamp</td>
+                        <td>"2024-01-15 08:05"</td>
+                    </tr>
+                    <tr>
+                        <td>check_out_time</td>
+                        <td>datetime</td>
+                        <td>Check-out timestamp</td>
+                        <td>"2024-01-15 17:00"</td>
+                    </tr>
+                    <tr>
+                        <td>check_in_lat</td>
+                        <td>decimal(10,8)</td>
+                        <td>GPS lat at check-in</td>
+                        <td>24.7136</td>
+                    </tr>
+                    <tr>
+                        <td>check_in_lng</td>
+                        <td>decimal(11,8)</td>
+                        <td>GPS lng at check-in</td>
+                        <td>46.6753</td>
+                    </tr>
+                    <tr>
+                        <td>check_out_lat</td>
+                        <td>decimal(10,8)</td>
+                        <td>GPS lat at check-out</td>
+                        <td>24.7136</td>
+                    </tr>
+                    <tr>
+                        <td>check_out_lng</td>
+                        <td>decimal(11,8)</td>
+                        <td>GPS lng at check-out</td>
+                        <td>46.6753</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>present, absent, late, early_leave</td>
+                        <td>"present"</td>
+                    </tr>
+                    <tr>
+                        <td>delay_minutes</td>
+                        <td>int</td>
+                        <td>Minutes late</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>notes</td>
+                        <td>text</td>
+                        <td>Admin notes</td>
+                        <td>"Traffic"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ requests</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>enum</td>
+                        <td>leave, excuse, expense, missing_punch</td>
+                        <td>"leave"</td>
+                    </tr>
+                    <tr>
+                        <td>leave_type_id</td>
+                        <td>bigint (nullable)</td>
+                        <td>FK → leave_types</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>string(200)</td>
+                        <td>Request title</td>
+                        <td>"Annual Leave"</td>
+                    </tr>
+                    <tr>
+                        <td>description</td>
+                        <td>text</td>
+                        <td>Details</td>
+                        <td>"Family vacation"</td>
+                    </tr>
+                    <tr>
+                        <td>start_date</td>
+                        <td>date</td>
+                        <td>Leave start</td>
+                        <td>"2024-02-01"</td>
+                    </tr>
+                    <tr>
+                        <td>end_date</td>
+                        <td>date</td>
+                        <td>Leave end</td>
+                        <td>"2024-02-05"</td>
+                    </tr>
+                    <tr>
+                        <td>expense_amount</td>
+                        <td>decimal(10,2)</td>
+                        <td>For expense type</td>
+                        <td>500.00</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>pending, approved, rejected</td>
+                        <td>"pending"</td>
+                    </tr>
+                    <tr>
+                        <td>reviewed_by</td>
+                        <td>bigint (nullable)</td>
+                        <td>FK → admins</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>reviewed_at</td>
+                        <td>datetime</td>
+                        <td>Review timestamp</td>
+                        <td>"2024-01-20 10:00"</td>
+                    </tr>
+                    <tr>
+                        <td>rejection_reason</td>
+                        <td>text</td>
+                        <td>Why rejected</td>
+                        <td>null</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ payslips</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>month</td>
+                        <td>tinyint</td>
+                        <td>Month (1-12)</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>year</td>
+                        <td>year</td>
+                        <td>Year</td>
+                        <td>2024</td>
+                    </tr>
+                    <tr>
+                        <td>basic_salary</td>
+                        <td>decimal(10,2)</td>
+                        <td>Base salary</td>
+                        <td>8500.00</td>
+                    </tr>
+                    <tr>
+                        <td>total_earnings</td>
+                        <td>decimal(10,2)</td>
+                        <td>All earnings</td>
+                        <td>10500.00</td>
+                    </tr>
+                    <tr>
+                        <td>total_deductions</td>
+                        <td>decimal(10,2)</td>
+                        <td>All deductions</td>
+                        <td>500.00</td>
+                    </tr>
+                    <tr>
+                        <td>net_salary</td>
+                        <td>decimal(10,2)</td>
+                        <td>Final amount</td>
+                        <td>10000.00</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>draft, published</td>
+                        <td>"published"</td>
+                    </tr>
+                    <tr>
+                        <td>published_at</td>
+                        <td>datetime</td>
+                        <td>When published</td>
+                        <td>"2024-01-28"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ warnings</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>issued_by</td>
+                        <td>bigint</td>
+                        <td>FK → admins</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>enum</td>
+                        <td>verbal, written, final</td>
+                        <td>"verbal"</td>
+                    </tr>
+                    <tr>
+                        <td>reason</td>
+                        <td>text</td>
+                        <td>Warning reason</td>
+                        <td>"Late 3 times"</td>
+                    </tr>
+                    <tr>
+                        <td>issued_at</td>
+                        <td>date</td>
+                        <td>Issue date</td>
+                        <td>"2024-01-15"</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>active, objected, resolved</td>
+                        <td>"active"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ notifications</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>string(200)</td>
+                        <td>Title</td>
+                        <td>"Request Approved"</td>
+                    </tr>
+                    <tr>
+                        <td>body</td>
+                        <td>text</td>
+                        <td>Content</td>
+                        <td>"Your leave has been approved"</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>string(50)</td>
+                        <td>Notification type</td>
+                        <td>"request_approved"</td>
+                    </tr>
+                    <tr>
+                        <td>data</td>
+                        <td>json</td>
+                        <td>Extra data</td>
+                        <td>{"request_id": 1}</td>
+                    </tr>
+                    <tr>
+                        <td>is_read</td>
+                        <td>boolean</td>
+                        <td>Read or not</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>read_at</td>
+                        <td>datetime</td>
+                        <td>When read</td>
+                        <td>null</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ otps</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>code</td>
+                        <td>string(6)</td>
+                        <td>6-digit OTP</td>
+                        <td>"123456"</td>
+                    </tr>
+                    <tr>
+                        <td>purpose</td>
+                        <td>enum</td>
+                        <td>password_reset, phone_verify</td>
+                        <td>"password_reset"</td>
+                    </tr>
+                    <tr>
+                        <td>expires_at</td>
+                        <td>datetime</td>
+                        <td>Expiry time</td>
+                        <td>"2024-01-15 10:05"</td>
+                    </tr>
+                    <tr>
+                        <td>is_used</td>
+                        <td>boolean</td>
+                        <td>Used or not</td>
+                        <td>false</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ meetings</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>string(200)</td>
+                        <td>Meeting title</td>
+                        <td>"Weekly Team Meeting"</td>
+                    </tr>
+                    <tr>
+                        <td>description</td>
+                        <td>text</td>
+                        <td>Meeting details</td>
+                        <td>"Discuss project progress"</td>
+                    </tr>
+                    <tr>
+                        <td>meeting_date</td>
+                        <td>date</td>
+                        <td>Meeting date</td>
+                        <td>"2024-01-20"</td>
+                    </tr>
+                    <tr>
+                        <td>start_time</td>
+                        <td>time</td>
+                        <td>Start time</td>
+                        <td>"10:00:00"</td>
+                    </tr>
+                    <tr>
+                        <td>end_time</td>
+                        <td>time</td>
+                        <td>End time</td>
+                        <td>"11:00:00"</td>
+                    </tr>
+                    <tr>
+                        <td>location</td>
+                        <td>string(200)</td>
+                        <td>Meeting location</td>
+                        <td>"Conference Room A"</td>
+                    </tr>
+                    <tr>
+                        <td>created_by</td>
+                        <td>bigint</td>
+                        <td>FK → admins</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>scheduled, completed, cancelled</td>
+                        <td>"scheduled"</td>
+                    </tr>
+                    <tr>
+                        <td>created_at</td>
+                        <td>timestamp</td>
+                        <td>Created time</td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ meeting_attendees</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>meeting_id</td>
+                        <td>bigint</td>
+                        <td>FK → meetings</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>pending, accepted, declined</td>
+                        <td>"pending"</td>
+                    </tr>
+                    <tr>
+                        <td>responded_at</td>
+                        <td>datetime</td>
+                        <td>When responded</td>
+                        <td>"2024-01-18 09:00"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ documents</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>enum</td>
+                        <td>id_card, passport, license, certificate, other</td>
+                        <td>"passport"</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>string(200)</td>
+                        <td>Document title</td>
+                        <td>"Passport Copy"</td>
+                    </tr>
+                    <tr>
+                        <td>file_path</td>
+                        <td>string</td>
+                        <td>Storage path</td>
+                        <td>"documents/1/passport.pdf"</td>
+                    </tr>
+                    <tr>
+                        <td>expiry_date</td>
+                        <td>date (nullable)</td>
+                        <td>When expires</td>
+                        <td>"2028-05-15"</td>
+                    </tr>
+                    <tr>
+                        <td>uploaded_by</td>
+                        <td>bigint</td>
+                        <td>FK → admins</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>created_at</td>
+                        <td>timestamp</td>
+                        <td>Upload time</td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="db-section">
+                <span class="section-label">🗄️ contracts</span>
+                <table>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>bigint</td>
+                        <td>Primary key</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>employee_id</td>
+                        <td>bigint</td>
+                        <td>FK → employees</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>contract_number</td>
+                        <td>string(50)</td>
+                        <td>Unique contract ID</td>
+                        <td>"CNT-2024-001"</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>enum</td>
+                        <td>permanent, temporary, probation</td>
+                        <td>"permanent"</td>
+                    </tr>
+                    <tr>
+                        <td>start_date</td>
+                        <td>date</td>
+                        <td>Contract start</td>
+                        <td>"2024-01-01"</td>
+                    </tr>
+                    <tr>
+                        <td>end_date</td>
+                        <td>date (nullable)</td>
+                        <td>Contract end</td>
+                        <td>"2025-12-31"</td>
+                    </tr>
+                    <tr>
+                        <td>salary</td>
+                        <td>decimal(10,2)</td>
+                        <td>Contract salary</td>
+                        <td>8500.00</td>
+                    </tr>
+                    <tr>
+                        <td>file_path</td>
+                        <td>string</td>
+                        <td>Contract PDF path</td>
+                        <td>"contracts/1/contract.pdf"</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>enum</td>
+                        <td>active, expired, terminated</td>
+                        <td>"active"</td>
+                    </tr>
+                    <tr>
+                        <td>created_at</td>
+                        <td>timestamp</td>
+                        <td>Created time</td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 3 -->
+        <h2>📦 Phase 3: Authentication</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 3.1</span>
+                <span class="task-title">Admin Dashboard Authentication</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Session-based auth for admins.
+                    Login page, logout, and middleware to protect routes.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Routes:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/login</code></td>
+                        <td>GET</td>
+                        <td>Show login form</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/login</code></td>
+                        <td>POST</td>
+                        <td>Process login</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/logout</code></td>
+                        <td>POST</td>
+                        <td>Logout admin</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 3.2</span>
+                <span class="task-title">Employee Mobile Authentication</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Token-based auth for mobile
+                    app. Includes login, forgot password with OTP, and PIN
+                    authentication.
+                </p>
+            </div>
+
+            <div class="api-section">
+                <span class="section-label api-label">📱 APIs:</span>
+                <table>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/login</code></td>
+                        <td>POST</td>
+                        <td>Login with email & password, returns token</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/logout</code></td>
+                        <td>POST</td>
+                        <td>Revoke current token</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/me</code></td>
+                        <td>GET</td>
+                        <td>Get current employee profile</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/forgot-password</code></td>
+                        <td>POST</td>
+                        <td>Send 6-digit OTP to phone</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/verify-otp</code></td>
+                        <td>POST</td>
+                        <td>Verify OTP code</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/reset-password</code></td>
+                        <td>POST</td>
+                        <td>Set new password after OTP</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/setup-pin</code></td>
+                        <td>POST</td>
+                        <td>Set 4-digit PIN for quick login</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/auth/verify-pin</code></td>
+                        <td>POST</td>
+                        <td>Login with PIN, returns token</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 4 -->
+        <h2>📦 Phase 4: Employee Management (Dashboard)</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 4.1</span>
+                <span class="task-title">Employees CRUD Pages</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard pages to list,
+                    create, view, and edit employees. Includes search, filters,
+                    and pagination.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/employees</code></td>
+                        <td>List all employees with search & filters</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/employees/create</code></td>
+                        <td>Form to add new employee</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/employees/{id}</code></td>
+                        <td>View employee details</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/employees/{id}/edit</code></td>
+                        <td>Edit employee</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 4.2</span>
+                <span class="task-title">Lookups CRUD Pages</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Simple CRUD pages for managing
+                    lookup tables.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/departments</code></td>
+                        <td>Manage departments</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/positions</code></td>
+                        <td>Manage job positions</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/nationalities</code></td>
+                        <td>Manage nationalities</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/leave-types</code></td>
+                        <td>Manage leave types</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/work-locations</code></td>
+                        <td>Manage work locations</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/work-schedules</code></td>
+                        <td>Manage work schedules</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 5 -->
+        <h2>📦 Phase 5: Attendance</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 5.1</span>
+                <span class="task-title">Attendance Mobile APIs</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> APIs for employees to
+                    check-in/out using GPS location, view their attendance
+                    history, and get attendance summary.
+                </p>
+            </div>
+
+            <div class="api-section">
+                <span class="section-label api-label">📱 APIs:</span>
+                <table>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/api/attendance/check-in</code></td>
+                        <td>POST</td>
+                        <td>Record check-in with GPS coordinates</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/attendance/check-out</code></td>
+                        <td>POST</td>
+                        <td>Record check-out with GPS coordinates</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/attendance/today</code></td>
+                        <td>GET</td>
+                        <td>Get today's attendance status</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>/api/attendance/monthly/{year}/{month}</code>
+                        </td>
+                        <td>GET</td>
+                        <td>Get calendar view for a month</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/attendance/summary</code></td>
+                        <td>GET</td>
+                        <td>Get totals: present, absent, late days</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 5.2</span>
+                <span class="task-title">Attendance Dashboard Pages</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard pages to view all
+                    employees' attendance, manually edit records, and manage
+                    work schedules.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/attendance</code></td>
+                        <td>List all attendance records with filters</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/attendance/{id}/edit</code></td>
+                        <td>Manually correct check-in/out times</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/work-schedules</code></td>
+                        <td>Manage work schedules</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 6 -->
+        <h2>📦 Phase 6: Requests</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 6.1</span>
+                <span class="task-title">Requests Mobile APIs</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> APIs for employees to submit
+                    different types of requests (leave, excuse, expense) and
+                    view their request history.
+                </p>
+            </div>
+
+            <div class="api-section">
+                <span class="section-label api-label">📱 APIs:</span>
+                <table>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/api/requests/leave</code></td>
+                        <td>POST</td>
+                        <td>Submit leave request</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/requests/excuse</code></td>
+                        <td>POST</td>
+                        <td>Submit excuse for late/early</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/requests/expense</code></td>
+                        <td>POST</td>
+                        <td>Submit expense claim</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/requests/missing-punch</code></td>
+                        <td>POST</td>
+                        <td>Report missed check-in/out</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/requests</code></td>
+                        <td>GET</td>
+                        <td>List my requests</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/requests/{id}</code></td>
+                        <td>GET</td>
+                        <td>Get request details</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/requests/{id}</code></td>
+                        <td>DELETE</td>
+                        <td>Cancel pending request</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 6.2</span>
+                <span class="task-title">Requests Dashboard Pages</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard pages for admins to
+                    view all requests and approve/reject them.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/requests</code></td>
+                        <td>List all requests with filters</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/requests/pending</code></td>
+                        <td>Show only pending requests</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/requests/{id}</code></td>
+                        <td>View details & approve/reject</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 7 -->
+        <h2>📦 Phase 7: Payslip</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 7.1</span>
+                <span class="task-title">Payslip Mobile APIs</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> APIs for employees to view
+                    their salary slips and download PDF versions.
+                </p>
+            </div>
+
+            <div class="api-section">
+                <span class="section-label api-label">📱 APIs:</span>
+                <table>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/api/payslips</code></td>
+                        <td>GET</td>
+                        <td>List all my payslips</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/payslips/latest</code></td>
+                        <td>GET</td>
+                        <td>Get most recent payslip</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/payslips/{id}</code></td>
+                        <td>GET</td>
+                        <td>Get payslip details</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/payslips/{id}/download</code></td>
+                        <td>GET</td>
+                        <td>Download as PDF</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 7.2</span>
+                <span class="task-title">Payslip Dashboard Pages</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard pages for admins to
+                    generate monthly payroll and manage individual payslips.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/payroll</code></td>
+                        <td>List payslips by month</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/payroll/generate</code></td>
+                        <td>Generate payslips for all employees</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/payslips/create</code></td>
+                        <td>Create single payslip</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/payslips/{id}/edit</code></td>
+                        <td>Edit payslip</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 8 -->
+        <h2>📦 Phase 8: Warnings</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 8.1</span>
+                <span class="task-title">Warnings Mobile APIs</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> APIs for employees to view
+                    warnings issued to them and submit objections.
+                </p>
+            </div>
+
+            <div class="api-section">
+                <span class="section-label api-label">📱 APIs:</span>
+                <table>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/api/warnings</code></td>
+                        <td>GET</td>
+                        <td>List my warnings</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/warnings/{id}</code></td>
+                        <td>GET</td>
+                        <td>Get warning details</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/warnings/{id}/objection</code></td>
+                        <td>POST</td>
+                        <td>Submit objection</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 8.2</span>
+                <span class="task-title">Warnings Dashboard Pages</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard pages for admins to
+                    issue warnings and review employee objections.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/warnings</code></td>
+                        <td>List all warnings</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/warnings/create</code></td>
+                        <td>Issue new warning</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/warnings/{id}</code></td>
+                        <td>View warning details</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/warnings/objections</code></td>
+                        <td>Review objections</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 9 -->
+        <h2>📦 Phase 9: Notifications</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 9.1</span>
+                <span class="task-title">Notifications Mobile APIs</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> APIs for employees to view
+                    their notifications and mark them as read.
+                </p>
+            </div>
+
+            <div class="api-section">
+                <span class="section-label api-label">📱 APIs:</span>
+                <table>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/api/notifications</code></td>
+                        <td>GET</td>
+                        <td>List my notifications</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/notifications/unread-count</code></td>
+                        <td>GET</td>
+                        <td>Get unread count</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/notifications/{id}/read</code></td>
+                        <td>PUT</td>
+                        <td>Mark as read</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/notifications/read-all</code></td>
+                        <td>PUT</td>
+                        <td>Mark all as read</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 9.2</span>
+                <span class="task-title">Notifications Dashboard Pages</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard page for admins to
+                    send notifications to employees.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/notifications</code></td>
+                        <td>List sent notifications</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/notifications/send</code></td>
+                        <td>Send new notification</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Phase 10 -->
+        <h2>📦 Phase 10: Reports (Dashboard Only)</h2>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 10.1</span>
+                <span class="task-title">Attendance Reports</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard pages to generate
+                    attendance reports with export options.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/attendance/daily</code></td>
+                        <td>Daily attendance report</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/attendance/monthly</code></td>
+                        <td>Monthly summary</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/attendance/delays</code></td>
+                        <td>Late arrivals report</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/attendance/absences</code></td>
+                        <td>Absences report</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-header">
+                <span class="task-number">Task 10.2</span>
+                <span class="task-title">HR Reports</span>
+            </div>
+            <div class="task-description">
+                <p>
+                    <strong>Description:</strong> Dashboard pages for HR reports
+                    with PDF/Excel export.
+                </p>
+            </div>
+
+            <div class="web-section">
+                <span class="section-label web-label">🖥️ Pages:</span>
+                <table>
+                    <tr>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/employees</code></td>
+                        <td>Employee statistics</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/leaves</code></td>
+                        <td>Leave usage report</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/requests</code></td>
+                        <td>Requests summary</td>
+                    </tr>
+                    <tr>
+                        <td><code>/admin/reports/payroll</code></td>
+                        <td>Payroll summary</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
+        <h2>📊 Timeline Summary</h2>
+        <table>
+            <tr>
+                <th>Phase</th>
+                <th>Tasks</th>
+                <th>Days</th>
+            </tr>
+            <tr>
+                <td>1. Setup</td>
+                <td>Initialize project</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2. Database</td>
+                <td>All migrations</td>
+                <td>2-3</td>
+            </tr>
+            <tr>
+                <td>3. Auth</td>
+                <td>Admin + Employee auth</td>
+                <td>2-3</td>
+            </tr>
+            <tr>
+                <td>4. Roles & Permissions & Admins</td>
+                <td>Dashboard</td>
+                <td>2-3</td>
+            </tr>
+            <tr>
+                <td>5. Attendance</td>
+                <td>APIs + Dashboard</td>
+                <td>4-5</td>
+            </tr>
+            <tr>
+                <td>6. Requests</td>
+                <td>APIs + Dashboard</td>
+                <td>3-4</td>
+            </tr>
+            <tr>
+                <td>7. Payslip</td>
+                <td>APIs + Dashboard</td>
+                <td>2-3</td>
+            </tr>
+            <tr>
+                <td>8. Warnings</td>
+                <td>APIs + Dashboard</td>
+                <td>1-2</td>
+            </tr>
+            <tr>
+                <td>9. Notifications</td>
+                <td>APIs + Dashboard</td>
+                <td>2-3</td>
+            </tr>
+            <tr>
+                <td>10. Reports</td>
+                <td>Dashboard only</td>
+                <td>3-4</td>
+            </tr>
+            <tr
+                style="
+                    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+                    color: white;
+                    font-weight: bold;
+                "
+            >
+                <td colspan="2">Total</td>
+                <td>30-35 days</td>
+            </tr>
+        </table>
+
+        <!-- <div class="ready">
+            <h2>🚀 Ready for Implementation!</h2>
+        </div> -->
+    </body>
+</html>

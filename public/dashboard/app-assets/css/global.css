@@ -1,0 +1,1803 @@
+:root {
+    --main-color: linear-gradient(135deg, #0a0a0a, #1a1a2e 50%, #16213e);
+    --main-bg-start: #0a0a0a;
+    --main-bg-mid: #1a1a2e;
+    --main-bg-end: #16213e;
+    --accent-blue: #4da3ff;
+    --text-light: #f5f5f5;
+    --text-muted: #b8b8b8;
+}
+
+/* تطبيق الخلفية على الـ Body */
+body {
+    background: var(--main-color) !important;
+    color: var(--text-light);
+}
+
+/* تطبيق الخلفية على القائمة الجانبية - Dark Mode */
+.main-menu.menu-dark,
+.main-menu.menu-light {
+    background: var(--main-color) !important;
+}
+
+.main-menu.menu-dark .navigation,
+.main-menu.menu-light .navigation {
+    background: transparent !important;
+}
+
+/* تخصيص عناصر القائمة الجانبية */
+.main-menu .navigation .navigation-header {
+    color: var(--text-muted) !important;
+}
+
+.main-menu.menu-dark .navigation > li > a,
+.main-menu.menu-light .navigation > li > a {
+    color: var(--text-light) !important;
+}
+
+.main-menu.menu-dark .navigation > li:hover > a,
+.main-menu.menu-dark .navigation > li.active > a,
+.main-menu.menu-light .navigation > li:hover > a,
+.main-menu.menu-light .navigation > li.active > a {
+    background: linear-gradient(
+        118deg,
+        var(--accent-blue),
+        rgba(77, 163, 255, 0.7)
+    ) !important;
+    box-shadow: 0 0 10px 1px rgba(77, 163, 255, 0.7) !important;
+    color: #fff !important;
+}
+
+/* تخصيص الـ Brand Logo */
+.main-menu .navbar-header {
+    background: transparent !important;
+}
+
+.main-menu .navbar-header .brand-text {
+    color: var(--accent-blue) !important;
+    font-weight: bold;
+}
+
+/* تخصيص أيقونة القائمة */
+.main-menu .navbar-header .nav-toggle i {
+    color: var(--accent-blue) !important;
+}
+
+/* تخصيص الـ Content Area */
+.app-content {
+    background: transparent !important;
+}
+
+.content-wrapper {
+    background: transparent !important;
+}
+
+/* تخصيص الـ Cards - خلفية أفتح للوضوح */
+.card {
+    background: rgba(30, 35, 55, 0.95) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: #f0f0f0 !important;
+}
+
+.card-header {
+    background: rgba(25, 30, 50, 0.9) !important;
+    border-bottom: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: #ffffff !important;
+}
+
+/* تخصيص الـ Tables - نصوص واضحة */
+.table {
+    color: #ffffff !important;
+}
+
+.table thead th {
+    background: rgba(25, 30, 50, 0.8) !important;
+    border-color: rgba(77, 163, 255, 0.3) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.table tbody tr {
+    background: rgba(30, 35, 55, 0.6) !important;
+    border-color: rgba(77, 163, 255, 0.15) !important;
+}
+
+.table tbody tr:hover {
+    background: rgba(40, 50, 75, 0.8) !important;
+}
+
+.table tbody td {
+    color: #f5f5f5 !important;
+    font-weight: 400;
+}
+
+/* تخصيص الـ Navbar */
+.header-navbar {
+    background: rgba(26, 26, 46, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px 0 rgba(77, 163, 255, 0.15) !important;
+}
+
+.header-navbar .navbar-container {
+    background: transparent !important;
+}
+
+/* تخصيص الـ Dropdown Menu */
+.dropdown-menu {
+    background: rgba(26, 26, 46, 0.98) !important;
+    border: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+.dropdown-item {
+    color: var(--text-light) !important;
+}
+
+.dropdown-item:hover {
+    background: rgba(77, 163, 255, 0.2) !important;
+}
+
+/* تخصيص الـ Buttons */
+.btn-primary {
+    background: linear-gradient(
+        118deg,
+        var(--accent-blue),
+        rgba(77, 163, 255, 0.7)
+    ) !important;
+    border: none !important;
+    box-shadow: 0 0 10px 1px rgba(77, 163, 255, 0.4) !important;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 15px 2px rgba(77, 163, 255, 0.6) !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* تحسين باقي الـ Buttons - ألوان موحدة */
+.btn-success {
+    background: linear-gradient(
+        118deg,
+        var(--accent-blue),
+        rgba(77, 163, 255, 0.7)
+    ) !important;
+    border: none !important;
+    box-shadow: 0 0 10px 1px rgba(77, 163, 255, 0.4) !important;
+    color: #fff !important;
+}
+
+.btn-success:hover {
+    box-shadow: 0 0 15px 2px rgba(77, 163, 255, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(
+        118deg,
+        #dc3545,
+        rgba(220, 53, 69, 0.8)
+    ) !important;
+    border: none !important;
+    box-shadow: 0 0 8px 1px rgba(220, 53, 69, 0.3) !important;
+    color: #fff !important;
+}
+
+.btn-danger:hover {
+    box-shadow: 0 0 12px 2px rgba(220, 53, 69, 0.5) !important;
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background: linear-gradient(
+        118deg,
+        var(--accent-blue),
+        rgba(77, 163, 255, 0.7)
+    ) !important;
+    border: none !important;
+    box-shadow: 0 0 10px 1px rgba(77, 163, 255, 0.4) !important;
+    color: #fff !important;
+}
+
+.btn-warning:hover {
+    box-shadow: 0 0 15px 2px rgba(77, 163, 255, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+.btn-info {
+    background: linear-gradient(
+        118deg,
+        #17a2b8,
+        rgba(23, 162, 184, 0.8)
+    ) !important;
+    border: none !important;
+    box-shadow: 0 0 8px 1px rgba(23, 162, 184, 0.4) !important;
+    color: #fff !important;
+}
+
+.btn-info:hover {
+    box-shadow: 0 0 12px 2px rgba(23, 162, 184, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: rgba(130, 134, 139, 0.2) !important;
+    border: 1px solid rgba(130, 134, 139, 0.4) !important;
+    color: #b0b0b0 !important;
+}
+
+.btn-secondary:hover {
+    background: rgba(130, 134, 139, 0.3) !important;
+    border-color: rgba(130, 134, 139, 0.6) !important;
+    color: #fff !important;
+}
+
+.btn-outline-secondary {
+    background: transparent !important;
+    border: 1px solid rgba(160, 160, 160, 0.4) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-outline-secondary:hover {
+    background: rgba(160, 160, 160, 0.2) !important;
+    border-color: rgba(160, 160, 160, 0.6) !important;
+    color: #fff !important;
+}
+
+/* تخصيص الـ Form Controls */
+.form-control,
+.form-select {
+    background: rgba(30, 35, 55, 0.8) !important;
+    border: 1px solid rgba(77, 163, 255, 0.4) !important;
+    color: #ffffff !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: rgba(35, 40, 60, 0.95) !important;
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 12px 1px rgba(77, 163, 255, 0.4) !important;
+    color: #ffffff !important;
+}
+
+.form-control::placeholder {
+    color: #c0c0c0 !important;
+    opacity: 0.8;
+}
+
+/* تخصيص الـ Footer */
+footer.footer {
+    background: rgba(26, 26, 46, 0.8) !important;
+    color: var(--text-light);
+}
+
+/* تخصيص الـ Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(10, 10, 10, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(77, 163, 255, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(77, 163, 255, 0.7);
+}
+
+/* تخصيص الـ Shadow Bottom */
+.main-menu .shadow-bottom {
+    background: linear-gradient(
+        to bottom,
+        rgba(77, 163, 255, 0.2),
+        transparent
+    ) !important;
+}
+
+/* Custom Class */
+.custom-class {
+    background: var(--main-color);
+    color: white;
+}
+
+/* تخصيص الـ Pagination */
+.pagination .page-item.active .page-link {
+    background: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+}
+
+.pagination .page-link {
+    background: rgba(26, 26, 46, 0.6) !important;
+    border-color: rgba(77, 163, 255, 0.2) !important;
+    color: var(--text-light) !important;
+}
+
+.pagination .page-link:hover {
+    background: rgba(77, 163, 255, 0.3) !important;
+    color: #fff !important;
+}
+
+/* تخصيص الـ Badges */
+.badge {
+    background: rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Modal */
+.modal-content {
+    background: rgba(26, 26, 46, 0.98) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+/* تخصيص الـ Alert Messages */
+.alert {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light);
+}
+
+/* تخصيص الـ Breadcrumb */
+.breadcrumb {
+    background: rgba(26, 26, 46, 0.5) !important;
+}
+
+.breadcrumb-item a {
+    color: var(--accent-blue) !important;
+}
+
+.breadcrumb-item.active {
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Switch/Toggle */
+.form-check-input:checked {
+    background-color: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+}
+
+/* تخصيص Labels */
+.form-label {
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Input Groups */
+.input-group-text {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Nav Tabs */
+.nav-tabs {
+    border-bottom: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-muted) !important;
+    background: transparent !important;
+}
+
+.nav-tabs .nav-link.active {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border-color: rgba(77, 163, 255, 0.3) !important;
+    color: var(--accent-blue) !important;
+}
+
+/* تخصيص الـ Progress Bar */
+.progress {
+    background: rgba(26, 26, 46, 0.6) !important;
+}
+
+.progress-bar {
+    background: linear-gradient(
+        118deg,
+        var(--accent-blue),
+        rgba(77, 163, 255, 0.7)
+    ) !important;
+}
+
+/* تخصيص الـ List Group */
+.list-group-item {
+    background: rgba(26, 26, 46, 0.6) !important;
+    border: 1px solid rgba(77, 163, 255, 0.2) !important;
+    color: var(--text-light) !important;
+}
+
+.list-group-item:hover {
+    background: rgba(22, 33, 62, 0.8) !important;
+}
+
+/* تخصيص الـ Accordion */
+.accordion-item {
+    background: rgba(26, 26, 46, 0.6) !important;
+    border: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+.accordion-button {
+    background: rgba(22, 33, 62, 0.6) !important;
+    color: var(--text-light) !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background: rgba(77, 163, 255, 0.3) !important;
+    color: #fff !important;
+}
+
+/* تخصيص الـ Placeholder Text */
+::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.7;
+}
+
+/* تخصيص الـ Select Options */
+select option {
+    background: var(--main-bg-mid) !important;
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Text Color */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* تخصيص الـ Links */
+a {
+    color: var(--accent-blue) !important;
+}
+
+a:hover {
+    color: rgba(77, 163, 255, 0.8) !important;
+}
+
+/* تخصيص أيقونات Feather */
+[data-feather] {
+    color: var(--text-light);
+}
+
+.main-menu.menu-dark .navigation > li.active [data-feather],
+.main-menu.menu-dark .navigation > li:hover [data-feather],
+.main-menu.menu-light .navigation > li.active [data-feather],
+.main-menu.menu-light .navigation > li:hover [data-feather] {
+    color: #fff !important;
+}
+
+/* تحسين أيقونات الـ Sidebar - animation و glow */
+.main-menu .navigation > li > a [data-feather] {
+    transition: all 0.3s ease;
+}
+
+.main-menu .navigation > li:hover > a [data-feather] {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(77, 163, 255, 0.6));
+}
+
+.main-menu .navigation > li.active > a [data-feather] {
+    animation: pulse-icon 2s infinite;
+}
+
+@keyframes pulse-icon {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px rgba(77, 163, 255, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(77, 163, 255, 0.9));
+    }
+}
+
+/* تخصيص أيقونات الـ Navbar في Dark Mode */
+.navbar-dark [data-feather],
+.navbar-dark .nav-link {
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Box Shadows */
+.shadow,
+.shadow-sm,
+.shadow-lg {
+    box-shadow: 0 4px 24px 0 rgba(77, 163, 255, 0.1) !important;
+}
+
+/* تخصيص الـ Content Overlay */
+.content-overlay {
+    background: rgba(10, 10, 10, 0.8) !important;
+}
+
+/* تخصيص الـ Sidenav Overlay */
+.sidenav-overlay {
+    background: rgba(10, 10, 10, 0.8) !important;
+}
+
+/* تخصيص الـ Avatar Status */
+.avatar-status-online {
+    background-color: #28c76f !important;
+    box-shadow: 0 0 5px rgba(40, 199, 111, 0.7) !important;
+}
+
+/* إضافة تأثير الـ Glow على العناصر المهمة */
+.brand-text {
+    text-shadow: 0 0 10px rgba(77, 163, 255, 0.5) !important;
+}
+
+/* تخصيص الـ Offcanvas */
+.offcanvas {
+    background: rgba(26, 26, 46, 0.98) !important;
+    color: var(--text-light);
+}
+
+/* تحسين التباين للنصوص */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* تخصيص الـ Divider */
+hr {
+    border-color: rgba(77, 163, 255, 0.2) !important;
+    opacity: 1;
+}
+
+/* تحسينات إضافية للـ Dark Theme */
+
+/* تخصيص الـ Data Tables */
+.dataTables_wrapper {
+    color: var(--text-light) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: var(--text-light) !important;
+}
+
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Sweet Alert */
+.swal2-popup {
+    background: rgba(26, 26, 46, 0.98) !important;
+    color: var(--text-light) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+}
+
+.swal2-title,
+.swal2-content {
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Toast Notifications */
+.toast {
+    background: rgba(26, 26, 46, 0.95) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Loading Spinner */
+.spinner-border,
+.spinner-grow {
+    color: var(--accent-blue) !important;
+}
+
+/* تخصيص الـ Text Selection */
+::selection {
+    background: rgba(77, 163, 255, 0.4) !important;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: rgba(77, 163, 255, 0.4) !important;
+    color: #fff;
+}
+
+/* تخصيص الـ Focus Outline */
+*:focus {
+    outline: 2px solid rgba(77, 163, 255, 0.5) !important;
+    outline-offset: 2px;
+}
+
+/* تحسين المظهر للـ Disabled Elements */
+.btn:disabled,
+.form-control:disabled,
+.form-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* تخصيص الـ File Input */
+.custom-file-input {
+    color: var(--text-light) !important;
+}
+
+.custom-file-label {
+    background: rgba(26, 26, 46, 0.6) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Checkbox & Radio */
+.form-check-input {
+    background-color: rgba(26, 26, 46, 0.6) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+}
+
+.form-check-label {
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ List في الـ Sidebar */
+.main-menu .navigation .menu-content {
+    background: rgba(10, 10, 10, 0.3) !important;
+}
+
+.main-menu .navigation .menu-content li a {
+    color: var(--text-muted) !important;
+}
+
+.main-menu .navigation .menu-content li a:hover,
+.main-menu .navigation .menu-content li.active a {
+    color: var(--accent-blue) !important;
+}
+
+/* تخصيص الـ Search Input */
+input[type="search"] {
+    background: rgba(26, 26, 46, 0.6) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسين التباين للـ Small Text */
+small,
+.small {
+    color: var(--text-muted) !important;
+}
+
+/* تخصيص الـ Tooltips */
+.tooltip .tooltip-inner {
+    background: rgba(26, 26, 46, 0.98) !important;
+    color: var(--text-light) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+}
+
+/* تخصيص الـ Popover */
+.popover {
+    background: rgba(26, 26, 46, 0.98) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+}
+
+.popover-header {
+    background: rgba(22, 33, 62, 0.8) !important;
+    color: var(--text-light) !important;
+    border-bottom: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+.popover-body {
+    color: var(--text-light) !important;
+}
+
+/* تخصيص الـ Card Body */
+.card-body {
+    color: var(--text-light);
+}
+
+/* إضافة تأثير Hover للـ Cards */
+.card:hover {
+    border-color: rgba(77, 163, 255, 0.4) !important;
+    box-shadow: 0 0 20px rgba(77, 163, 255, 0.2) !important;
+    transition: all 0.3s ease;
+}
+
+/* تخصيص الـ Grid Background Pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+            rgba(77, 163, 255, 0.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(90deg, rgba(77, 163, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* تخصيص الـ Active Navigation Item */
+.main-menu .navigation li.active {
+    position: relative;
+}
+
+.main-menu .navigation li.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--accent-blue);
+    box-shadow: 0 0 10px rgba(77, 163, 255, 0.8);
+}
+
+/* تحسين الـ Transitions */
+.card,
+.btn,
+.form-control,
+.form-select,
+.main-menu .navigation > li > a,
+.pagination .page-link {
+    transition: all 0.3s ease;
+}
+
+/* تخصيص الـ Code Blocks */
+code,
+pre {
+    background: rgba(10, 10, 10, 0.6) !important;
+    color: var(--accent-blue) !important;
+    border: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+/* تخصيص الـ Blockquote */
+blockquote {
+    border-left: 4px solid var(--accent-blue) !important;
+    background: rgba(26, 26, 46, 0.5) !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Text Inputs في وضع الـ Read-only */
+.form-control[readonly],
+.form-select[readonly] {
+    background: rgba(26, 26, 46, 0.4) !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* تخصيص الـ Icon Buttons */
+.btn-icon {
+    color: var(--text-light) !important;
+}
+
+.btn-icon:hover {
+    background: rgba(77, 163, 255, 0.2) !important;
+    color: var(--accent-blue) !important;
+}
+
+/* تحسين مظهر الـ Navbar Brand */
+.navbar-brand img {
+    filter: brightness(1.2) drop-shadow(0 0 5px rgba(77, 163, 255, 0.3));
+}
+
+/* إضافات خاصة بـ Dark Mode */
+
+/* تحسين مظهر الـ Dropdown في Dark Mode */
+.navbar-dark .dropdown-menu {
+    background: rgba(26, 26, 46, 0.98) !important;
+}
+
+/* تحسين أيقونات الـ Flag في Dark Mode */
+.navbar-dark .flag-icon,
+.navbar-dark .selected-language {
+    color: var(--text-light) !important;
+}
+
+/* تحسين User Avatar في Navbar */
+.navbar-dark .user-name,
+.navbar-dark .user-status {
+    color: var(--text-light) !important;
+}
+
+/* إخفاء زر تبديل الوضع (لو موجود) */
+.nav-link-style {
+    display: none !important;
+}
+
+/* تحسين مظهر القوائم المنسدلة في Dark Mode */
+html.dark-layout .dropdown-menu {
+    background: rgba(26, 26, 46, 0.98) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+}
+
+html.dark-layout .dropdown-item {
+    color: var(--text-light) !important;
+}
+
+html.dark-layout .dropdown-item:hover {
+    background: rgba(77, 163, 255, 0.2) !important;
+}
+
+/* تحسين Navbar Bookmarks في Dark Mode */
+.navbar-dark .bookmark-icons .nav-link {
+    color: var(--text-light) !important;
+}
+
+.navbar-dark .bookmark-icons .nav-link:hover {
+    background: rgba(77, 163, 255, 0.2) !important;
+    border-radius: 0.5rem;
+}
+
+/* ================================
+   تحسينات Navbar للـ RTL (العربية)
+   ================================ */
+
+/* في وضع RTL، عكس ترتيب عناصر الـ Navbar */
+[dir="rtl"] .header-navbar .navbar-container {
+    flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .header-navbar {
+    direction: rtl !important;
+}
+
+/* Bookmark wrapper على اليمين في RTL */
+[dir="rtl"] .bookmark-wrapper {
+    order: 2;
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+/* User Nav على الشمال في RTL */
+[dir="rtl"] .navbar-nav.ms-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    order: 1;
+}
+
+/* تحسين Language Dropdown في RTL */
+[dir="rtl"] .dropdown-menu-end {
+    right: auto !important;
+    left: 0 !important;
+}
+
+/* تحسين User Dropdown في RTL */
+[dir="rtl"] .dropdown-user .dropdown-menu {
+    right: auto !important;
+    left: 0 !important;
+}
+
+/* تحسين Flag Icons في RTL */
+[dir="rtl"] .flag-icon {
+    margin-left: 0.5rem;
+}
+
+/* تحسين Selected Language في RTL */
+[dir="rtl"] .selected-language {
+    margin-right: 0.5rem;
+    margin-left: 0;
+}
+
+/* تحسين User Info في RTL */
+[dir="rtl"] .user-nav {
+    text-align: right;
+}
+
+[dir="rtl"] .user-name,
+[dir="rtl"] .user-status {
+    text-align: right;
+}
+
+/* تحسين Navbar Icons في RTL */
+[dir="rtl"] .navbar-nav .nav-item {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* تحسين Menu Toggle في RTL */
+[dir="rtl"] .menu-toggle {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* تحسين Card Header في RTL */
+[dir="rtl"] .card-header {
+    text-align: right;
+}
+
+[dir="rtl"] .card-header .btn {
+    float: left;
+}
+
+[dir="rtl"] .card-header.d-flex {
+    flex-direction: row-reverse !important;
+}
+
+/* تحسين الـ Justify Content في RTL */
+[dir="rtl"] .justify-content-between {
+    flex-direction: row-reverse;
+}
+
+/* تحسين Table في RTL */
+[dir="rtl"] .table {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+    text-align: right;
+}
+
+/* تحسين Table Responsive في RTL */
+[dir="rtl"] .table-responsive {
+    direction: rtl;
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .table {
+        font-size: 0.85rem;
+    }
+
+    [dir="rtl"] .table thead th {
+        padding: 0.5rem 0.3rem;
+    }
+
+    [dir="rtl"] .table tbody td {
+        padding: 0.5rem 0.3rem;
+    }
+}
+
+/* تحسين Search Input في RTL */
+[dir="rtl"] .input-group-text {
+    order: 2;
+}
+
+[dir="rtl"] .input-group .form-control {
+    text-align: right;
+}
+
+/* تحسين Buttons في RTL */
+[dir="rtl"] .btn [data-feather] {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* تحسين Badge في RTL */
+[dir="rtl"] .badge {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* تحسين Avatar في RTL */
+[dir="rtl"] .avatar.me-1 {
+    margin-left: 1rem !important;
+    margin-right: 0 !important;
+}
+
+/* تحسين Me Utilities في RTL */
+[dir="rtl"] .me-1 {
+    margin-right: 0 !important;
+    margin-left: 0.25rem !important;
+}
+
+[dir="rtl"] .me-2 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .me-50 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .ms-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+/* تحسين Action Buttons في RTL */
+[dir="rtl"] .d-flex.gap-1 {
+    flex-direction: row-reverse;
+}
+
+/* تحسين Pagination في RTL */
+[dir="rtl"] .pagination {
+    flex-direction: row-reverse;
+}
+
+/* Mobile Responsive للـ RTL */
+@media (max-width: 992px) {
+    [dir="rtl"] .card-header.d-flex {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    [dir="rtl"] .card-header .btn {
+        float: none;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .navbar-container {
+        flex-wrap: wrap;
+    }
+
+    [dir="rtl"] .bookmark-wrapper {
+        display: none;
+    }
+
+    [dir="rtl"] .table .d-flex.align-items-center {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    [dir="rtl"] .table .avatar {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* تحسين Mobile Menu في RTL */
+@media (max-width: 1200px) {
+    [dir="rtl"] .main-menu {
+        transform: translate3d(-100%, 0, 0) !important;
+    }
+
+    [dir="rtl"] .main-menu.menu-open {
+        transform: translate3d(0, 0, 0) !important;
+    }
+}
+
+/* تحسين Navigation Icons في RTL */
+[dir="rtl"] .main-menu .navigation > li.active::before {
+    left: auto !important;
+    right: 0 !important;
+}
+
+/* تحسين عام للـ Body في RTL */
+[dir="rtl"] body {
+    text-align: right;
+    direction: rtl;
+}
+
+/* تحسين Sidebar في RTL - على اليمين */
+[dir="rtl"] .main-menu {
+    left: auto !important;
+    right: 0 !important;
+}
+
+[dir="rtl"] .vertical-layout.vertical-menu-modern .main-menu {
+    left: auto !important;
+    right: 0 !important;
+}
+
+[dir="rtl"] .main-menu .navbar-header .brand-text {
+    text-align: right;
+}
+
+/* تحسين Content في RTL - مسافة من اليمين */
+[dir="rtl"] .vertical-layout.vertical-menu-modern .app-content,
+[dir="rtl"] .app-content {
+    margin-left: 0 !important;
+    margin-right: 260px !important;
+}
+
+[dir="rtl"] .vertical-layout.vertical-menu-modern.menu-collapsed .app-content {
+    margin-left: 0 !important;
+    margin-right: 80px !important;
+}
+
+/* تحسين Mobile في RTL */
+@media (max-width: 1200px) {
+    [dir="rtl"] .app-content,
+    [dir="rtl"] .vertical-layout.vertical-menu-modern .app-content {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* تحسين Overlay في RTL */
+[dir="rtl"] .sidenav-overlay {
+    right: auto !important;
+    left: 0 !important;
+}
+
+[dir="rtl"] .drag-target {
+    left: auto !important;
+    right: 0 !important;
+}
+
+/* تحسين Footer في RTL */
+[dir="rtl"] .footer {
+    text-align: center;
+}
+
+[dir="rtl"] .footer .footer-left {
+    float: right;
+}
+
+[dir="rtl"] .footer .footer-right {
+    float: left;
+}
+
+/* تحسين Modals في RTL */
+[dir="rtl"] .modal-header {
+    text-align: right;
+}
+
+[dir="rtl"] .modal-footer {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .modal-body {
+    text-align: right;
+}
+
+/* تحسين Forms في RTL */
+[dir="rtl"] .form-label,
+[dir="rtl"] .col-form-label,
+[dir="rtl"] label {
+    text-align: right;
+}
+
+/* تحسين Alerts في RTL */
+[dir="rtl"] .alert {
+    text-align: right;
+}
+
+/* تحسين Breadcrumbs في RTL */
+[dir="rtl"] .breadcrumb {
+    flex-direction: row-reverse;
+}
+
+/* تحسين List Group في RTL */
+[dir="rtl"] .list-group-item {
+    text-align: right;
+}
+
+/* ================================
+   تحسينات شاملة للـ Components
+   ================================ */
+
+/* تحسين الـ Modal Backdrop */
+.modal-backdrop {
+    background-color: rgba(10, 10, 10, 0.85) !important;
+}
+
+.modal-backdrop.show {
+    opacity: 0.9 !important;
+}
+
+/* تحسين الـ Modal Content */
+.modal-content {
+    background: linear-gradient(
+        135deg,
+        rgba(26, 26, 46, 0.98),
+        rgba(22, 33, 62, 0.98)
+    ) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    box-shadow: 0 10px 40px rgba(77, 163, 255, 0.2) !important;
+}
+
+/* تحسين Modal Header */
+.modal-header {
+    background: rgba(22, 33, 62, 0.8) !important;
+    border-bottom: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+.modal-title {
+    color: var(--accent-blue) !important;
+    font-weight: 600;
+}
+
+/* تحسين Modal Body */
+.modal-body {
+    background: transparent !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسين Modal Footer */
+.modal-footer {
+    background: rgba(22, 33, 62, 0.6) !important;
+    border-top: 1px solid rgba(77, 163, 255, 0.3) !important;
+}
+
+/* تحسين Close Button في Modal */
+.btn-close {
+    filter: invert(1) brightness(2.5) !important;
+    opacity: 1 !important;
+    width: 1em;
+    height: 1em;
+    padding: 0.4em;
+    background-size: 1em;
+}
+
+.btn-close:hover {
+    opacity: 0.8 !important;
+}
+
+/* تحسين Forms في الـ Modals */
+.modal-content .form-control,
+.modal-content .form-select {
+    background: rgba(26, 26, 46, 0.7) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+.modal-content .form-control:focus,
+.modal-content .form-select:focus {
+    background: rgba(26, 26, 46, 0.9) !important;
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 10px rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+.modal-content .form-label,
+.modal-content .col-form-label,
+.modal-content label {
+    color: var(--text-light) !important;
+    font-weight: 500;
+}
+
+/* تحسين Select Options في Modal */
+.modal-content select option {
+    background: var(--main-bg-mid) !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Badges - ألوان واضحة */
+.badge-light-success,
+.badge.badge-success {
+    background: rgba(77, 163, 255, 0.25) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(77, 163, 255, 0.5);
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+}
+
+.badge-light-danger,
+.badge.badge-danger {
+    background: rgba(220, 53, 69, 0.25) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(220, 53, 69, 0.5);
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+}
+
+.badge-light-info,
+.badge.badge-info {
+    background: rgba(23, 162, 184, 0.25) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(23, 162, 184, 0.5);
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+}
+
+.badge-light-warning,
+.badge.badge-warning {
+    background: rgba(77, 163, 255, 0.25) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(77, 163, 255, 0.5);
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+}
+
+.badge-light-secondary,
+.badge.badge-secondary {
+    background: rgba(130, 134, 139, 0.25) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid rgba(130, 134, 139, 0.5);
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+}
+
+.badge-light-primary,
+.badge.badge-primary {
+    background: rgba(77, 163, 255, 0.25) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(77, 163, 255, 0.5);
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+}
+
+/* تحسين الـ Avatar - لون موحد أزرق واضح */
+.avatar {
+    background: rgba(77, 163, 255, 0.3) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    border: 1px solid rgba(77, 163, 255, 0.5);
+}
+
+.avatar.bg-light-primary {
+    background: rgba(77, 163, 255, 0.35) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(77, 163, 255, 0.6);
+}
+
+.avatar-content {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+/* تحسين Error Messages */
+.invalid-feedback,
+.text-danger {
+    color: #ff3b3b !important;
+    font-weight: 500 !important;
+}
+
+/* تحسين الـ Spinner/Loading */
+.fa-spinner,
+.spinner-border,
+.spinner-grow {
+    color: var(--accent-blue) !important;
+}
+
+/* تحسين الـ Waves Effect */
+.waves-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+/* تحسين الـ Input Group */
+.modal-content .input-group-text {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Checkboxes في الـ Modal */
+.modal-content .form-check-input {
+    background-color: rgba(26, 26, 46, 0.7) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+}
+
+.modal-content .form-check-input:checked {
+    background-color: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+}
+
+.modal-content .form-check-label {
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Radio Buttons */
+.modal-content input[type="radio"] {
+    accent-color: var(--accent-blue) !important;
+}
+
+/* تحسين الـ Placeholder في Modals */
+.modal-content ::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.6;
+}
+
+/* تحسين الـ Disabled Inputs */
+.modal-content .form-control:disabled,
+.modal-content .form-select:disabled {
+    background: rgba(26, 26, 46, 0.4) !important;
+    color: var(--text-muted) !important;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* تحسين الـ File Input في Modal */
+.modal-content .custom-file-label {
+    background: rgba(26, 26, 46, 0.7) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Modal Different Sizes */
+.modal-success .modal-content,
+.modal-primary .modal-content,
+.modal-danger .modal-content,
+.modal-warning .modal-content {
+    background: linear-gradient(
+        135deg,
+        rgba(26, 26, 46, 0.98),
+        rgba(22, 33, 62, 0.98)
+    ) !important;
+}
+
+/* تحسين Modal Success */
+.modal-success .modal-header {
+    background: rgba(40, 199, 111, 0.15) !important;
+    border-bottom-color: rgba(40, 199, 111, 0.3) !important;
+}
+
+.modal-success .modal-title {
+    color: #28c76f !important;
+}
+
+/* تحسين Modal Primary */
+.modal-primary .modal-header {
+    background: rgba(77, 163, 255, 0.15) !important;
+    border-bottom-color: rgba(77, 163, 255, 0.3) !important;
+}
+
+.modal-primary .modal-title {
+    color: var(--accent-blue) !important;
+}
+
+/* تحسين Button States في Modal */
+.modal-footer .btn {
+    transition: all 0.3s ease;
+}
+
+.modal-footer .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(77, 163, 255, 0.3) !important;
+}
+
+/* تحسين الـ Text في الـ Modal */
+.modal-body p,
+.modal-body span,
+.modal-body div {
+    color: var(--text-light) !important;
+}
+
+.modal-body small {
+    color: var(--text-muted) !important;
+}
+
+/* ================================
+   تحسينات إضافية للـ UI
+   ================================ */
+
+/* تحسين Empty States */
+.text-center.py-4 {
+    color: var(--text-light) !important;
+}
+
+.text-center.py-4 [data-feather] {
+    color: var(--text-muted) !important;
+    opacity: 0.6;
+}
+
+/* تحسين الـ Search Input */
+.input-group-text {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Card Title */
+.card-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1.3rem !important;
+    text-shadow: 0 0 5px rgba(77, 163, 255, 0.3);
+}
+
+/* تحسين Pagination Links Colors */
+.pagination .page-item .page-link {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border-color: rgba(77, 163, 255, 0.2) !important;
+    color: var(--text-light) !important;
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 10px rgba(77, 163, 255, 0.5) !important;
+}
+
+.pagination .page-item.disabled .page-link {
+    background: rgba(26, 26, 46, 0.4) !important;
+    color: var(--text-muted) !important;
+}
+
+/* تحسين الـ Text Muted */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* تحسين الـ Breadcrumb في Dark Mode */
+html.dark-layout .breadcrumb-item,
+html.dark-layout .breadcrumb-item a {
+    color: var(--text-light) !important;
+}
+
+html.dark-layout .breadcrumb-item.active {
+    color: var(--accent-blue) !important;
+}
+
+/* تحسين الـ Form Group */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* تحسين Error Text */
+.text-danger,
+.invalid-feedback,
+.error-text {
+    color: #ff3b3b !important;
+    font-size: 0.875rem;
+    font-weight: 500 !important;
+}
+
+/* تحسين رسائل Validation Errors - أحمر واضح */
+span.text-danger,
+.alert.text-danger {
+    color: #ff3b3b !important;
+    font-weight: 500 !important;
+}
+
+/* تحسين الـ Button Icons */
+.btn-icon {
+    padding: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.btn-icon:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* تحسين الـ Gap Utility */
+.gap-1 {
+    gap: 0.5rem !important;
+}
+
+/* تحسين الـ Loading State */
+[wire\:loading] {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* تحسين الـ Disabled Buttons */
+.btn:disabled,
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* تحسين الـ Row Hover في Tables */
+.table tbody tr:hover {
+    background: rgba(77, 163, 255, 0.08) !important;
+    transition: all 0.2s ease;
+}
+
+/* تحسين الـ Small Tags */
+small {
+    color: #c5c5c5 !important;
+    font-size: 0.875rem;
+}
+
+.table small {
+    color: #d0d0d0 !important;
+}
+
+/* تحسين الـ D-flex Alignment */
+.d-flex.align-items-center {
+    align-items: center;
+}
+
+/* تحسين الـ Avatar في الجدول */
+.avatar.me-1 {
+    margin-right: 0.5rem !important;
+}
+
+/* تحسين الـ Fw-bold */
+.fw-bold,
+.fw-semibold {
+    font-weight: 700 !important;
+    color: #ffffff !important;
+}
+
+/* تحسين أسماء الـ Admins في الجدول - نفس لون الـ Email */
+.table .fw-bold {
+    color: #f5f5f5 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem;
+}
+
+/* تحسين الـ Span في الجدول */
+.table tbody td span {
+    color: #f5f5f5 !important;
+    font-weight: 400;
+}
+
+/* تحسين الـ Container */
+.container,
+.container-xxl {
+    color: #ffffff !important;
+}
+
+/* تحسين الـ D-flex في الجدول */
+.table .d-flex.align-items-center span {
+    color: #f5f5f5 !important;
+    font-weight: 400 !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow: visible !important;
+}
+
+/* منع قص الأسماء الطويلة */
+.table tbody td {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: initial !important;
+}
+
+/* تحسين عرض الأعمدة */
+.table tbody td:nth-child(2) {
+    min-width: 200px;
+    max-width: 300px;
+}
+
+/* إلغاء Text Truncate في الجداول */
+.table .text-truncate {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: initial !important;
+}
+
+/* تحسين الـ Waves Button */
+.waves-effect.waves-float {
+    overflow: hidden;
+}
+
+/* تحسين الـ Modal Animation */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}
+
+/* تحسين الـ Button Loading State */
+.btn [wire\:loading] {
+    display: inline-block;
+}
+
+/* تحسين الـ Custom Class Button */
+.btn.custom-class {
+    background: linear-gradient(
+        118deg,
+        var(--accent-blue),
+        rgba(77, 163, 255, 0.7)
+    ) !important;
+    border: none !important;
+    box-shadow: 0 0 10px 1px rgba(77, 163, 255, 0.4) !important;
+    color: #fff !important;
+}
+
+.btn.custom-class:hover {
+    box-shadow: 0 0 15px 2px rgba(77, 163, 255, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+/* تحسين الـ Text White */
+.text-white {
+    color: #fff !important;
+}
+
+/* تحسين الـ Me & Ms Utilities */
+.me-50 {
+    margin-right: 0.5rem !important;
+}
+
+.me-1 {
+    margin-right: 1rem !important;
+}
+
+.ms-auto {
+    margin-left: auto !important;
+}
+
+/* تحسين الـ Dropdown Divider */
+.dropdown-divider {
+    border-top: 1px solid rgba(77, 163, 255, 0.2) !important;
+}
+
+/* تحسين الـ Flag Icons في Dark Mode */
+.flag-icon {
+    opacity: 0.9;
+}
+
+/* تحسين Selected Language */
+.selected-language {
+    color: var(--text-light) !important;
+}
+
+/* تحسين User Nav */
+.user-nav {
+    color: var(--text-light) !important;
+}
+
+.user-name {
+    color: var(--text-light) !important;
+    font-weight: 600;
+}
+
+.user-status {
+    color: var(--text-muted) !important;
+    font-size: 0.875rem;
+}
+
+/* تحسين Avatar Round */
+.avatar .round {
+    border-radius: 50%;
+}
+
+/* تحسين Avatar Status Online */
+.avatar-status-online {
+    background-color: #28c76f !important;
+    border: 2px solid var(--main-bg-mid) !important;
+}
+
+/* تحسين الـ MB Utilities */
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-2 {
+    margin-bottom: 1rem !important;
+}
+
+.mt-3 {
+    margin-top: 1.5rem !important;
+}
+
+.mt-4 {
+    margin-top: 2rem !important;
+}
+
+/* تحسين Text Truncate - لا يطبق على Tables */
+.text-truncate:not(.table *) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* في الجداول، السماح بعرض النص الكامل */
+.table .text-truncate {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: initial !important;
+}
+
+/* تحسين Menu Title */
+.menu-title {
+    color: var(--text-light) !important;
+}
+
+/* تحسين Menu Item */
+.menu-item {
+    color: var(--text-light) !important;
+}
+
+/* تحسين الـ Content Header */
+.content-header {
+    color: var(--text-light);
+}
+
+/* تحسين الـ Content Body */
+.content-body {
+    color: var(--text-light);
+}
+
+/* تحسين الـ P-0 Utility */
+.p-0 {
+    padding: 0 !important;
+}
