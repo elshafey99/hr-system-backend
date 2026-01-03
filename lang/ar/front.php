@@ -189,26 +189,21 @@ return [
     'login-successful' => 'تم تسجيل الدخول بنجاح',
     'user-not-authenticated' => 'المستخدم غير مصرح له',
     'logged-out-successfully' => 'تم تسجيل الخروج بنجاح',
-
-    'country_not_found' => 'لم يتم العثور على الدولة.',
-    'no_governorates_for_country' => 'لا توجد محافظات تابعة لهذه الدولة.',
-    'loaded_successfully' => 'تم تحميل المحافظات بنجاح.',
-    'country_loaded_successfully' => 'تم تحميل الدول بنجاح.',
-    // المحافظات
-    'governorate_not_found' => 'لم يتم العثور على المحافظة.',
-
-    // المراكز التابعة للمحافظة
-    'no_centers_for_governorate' => 'لا توجد مراكز تابعة لهذه المحافظة.',
-    'centers_loaded_successfully' => 'تم تحميل المراكز بنجاح.',
-
-    // أخطاء عامة / الخادم
-    'server_error' => 'حدث خطأ في الخادم، يرجى المحاولة لاحقًا.',
-
-    // الباقات
-    'plans_loaded_successfully' => 'تم تحميل الباقات بنجاح.',
-    'plan_loaded_successfully' => 'تم تحميل الباقة بنجاح.',
-    'plan_not_found' => 'لم يتم العثور على الباقة.',
-    'plan_price_loaded_successfully' => 'تم تحميل سعر الباقة بنجاح.',
-    'plan_price_not_found' => 'لم يتم العثور على سعر الباقة لهذه الدولة.',
+    'method-not-allowed' => 'الطريقة غير مسموح بها',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
 
 ];

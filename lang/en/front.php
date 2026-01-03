@@ -189,27 +189,14 @@ return [
     'login-successful' => 'Login Successful',
     'user-not-authenticated' => 'User Not Authenticated',
     'logged-out-successfully' => 'Logged Out Successfully',
-
-    'no_governorates_for_country' => 'No governorates found for this country.',
-    'loaded_successfully' => 'Governorates loaded successfully.',
-    'country_not_found' => 'Country not found.',
-
-    'country_loaded_successfully' => 'Countries loaded successfully.',
-    // Governorates
-    'governorate_not_found' => 'Governorate not found.',
-
-    // Governorate Centers
-    'no_centers_for_governorate' => 'No centers found for this governorate.',
-    'centers_loaded_successfully' => 'Governorate centers loaded successfully.',
-
-    // Generic / Server
-    'server_error' => 'Something went wrong on the server. Please try again later.',
-
-    // Plans
-    'plans_loaded_successfully' => 'Plans loaded successfully.',
-    'plan_loaded_successfully' => 'Plan loaded successfully.',
-    'plan_not_found' => 'Plan not found.',
-    'plan_price_loaded_successfully' => 'Plan price loaded successfully.',
-    'plan_price_not_found' => 'Plan price not found for this country.',
+    'method-not-allowed' => 'Method Not Allowed',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
 
 ];

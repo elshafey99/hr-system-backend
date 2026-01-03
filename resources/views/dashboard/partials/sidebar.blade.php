@@ -62,78 +62,17 @@
                 </li>
             @endcan --}}
 
-            @can('locations')
+            {{-- @can('locations')
                 <li class="nav-item @yield('locations-active')">
                     <a class="d-flex align-items-center" href="{{ route('dashboard.locations.index') }}">
                         <i data-feather='map'></i>
                         <span class="menu-title text-truncate">{{ __('dashboard.locations') }}</span>
                     </a>
                 </li>
-            @endcan
-            @can('subscription-plans')
-                <li class="nav-item @yield('subscription-plans-active')">
-                    <a class="d-flex align-items-center" href="{{ route('dashboard.subscription-plans.index') }}">
-                        <i data-feather="credit-card"></i>
-                        <span class="menu-title text-truncate">{{ __('dashboard.subscription_plans') }}</span>
-                    </a>
-                </li>
-            @endcan
-            @can('properties')
-                <li class="nav-item @yield('properties-active')">
-                    <a class="d-flex align-items-center" href="{{ route('dashboard.properties.index') }}">
-                        <i data-feather="map-pin"></i>
-                        <span class="menu-title text-truncate">{{ __('dashboard.properties') }}</span>
-                    </a>
-                </li>
-            @endcan
-            @can('buildings')
-                <li class="nav-item @yield('buildings-active')">
-                    <a class="d-flex align-items-center" href="{{ route('dashboard.buildings.index') }}">
-                        <i data-feather="layers"></i>
-                        <span class="menu-title text-truncate">{{ __('dashboard.buildings') }}</span>
-                    </a>
-                </li>
-            @endcan
+            @endcan --}}
 
-            {{-- @can('floors') --}}
-            {{-- <li class="nav-item @yield('floors-active')">
-                <a class="d-flex align-items-center" href="{{ route('dashboard.floors.index') }}">
-                    <i data-feather="layers-3"></i>
-                    <span class="menu-title text-truncate">{{ __('dashboard.floors') }}</span>
-                </a>
-            </li> --}}
-            {{-- @endcan --}}
 
-            @can('property-roles')
-                <li class="nav-item @yield('property-roles-active')">
-                    <a class="d-flex align-items-center" href="{{ route('dashboard.property-roles.index') }}">
-                        <i data-feather="user-check"></i>
-                        <span class="menu-title text-truncate">{{ __('dashboard.property_roles') }}</span>
-                        <span
-                            class="badge badge-light-info rounded-pill ms-auto me-1">{{ App\Models\PropertyRoles::count() }}</span>
-                    </a>
-                </li>
-            @endcan
-
-            {{-- @can('units') --}}
-            {{-- <li class="nav-item @yield('units-active')">
-                <a class="d-flex align-items-center" href="{{ route('dashboard.units.index') }}">
-                    <i data-feather="door-open"></i>
-                    <span class="menu-title text-truncate">{{ __('dashboard.units') }}</span>
-                </a>
-            </li> --}}
-            {{-- @endcan --}}
-
-            {{-- @can('property-members') --}}
-            {{-- <li class="nav-item @yield('property-members-active')">
-                <a class="d-flex align-items-center" href="{{ route('dashboard.property-members.index') }}">
-                    <i data-feather="users"></i>
-                    <span class="menu-title text-truncate">{{ __('dashboard.property_members') }}</span>
-                </a>
-            </li> --}}
-            {{-- @endcan --}}
-
-            @can('settings')
+            {{-- @can('settings')
                 <li class="nav-item @yield('settings-open')"><a class="d-flex align-items-center" href="#">
                         <i data-feather="settings"></i><span class="menu-title text-truncate"
                             data-i18n="Roles &amp; Permission">{{ __('dashboard.settings') }}</span>
@@ -146,7 +85,7 @@
                         </li>
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
         </ul>
     </div>
