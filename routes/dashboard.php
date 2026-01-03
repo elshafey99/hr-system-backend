@@ -82,30 +82,6 @@ Route::group([
         })->name('centers.index');
         ############################### End Locations Routes ############################################ 
 
-        ############################### Start of Subscription Plans Routes ############################################
-        Route::get('plans', function () {
-            return view('dashboard.plans.index');
-        })->middleware('can:subscription-plans')->name('subscription-plans.index');
-        ############################### End of Subscription Plans Routes ############################################
-
-        ############################### Start of Properties Routes ############################################
-        Route::get('properties', function () {
-            return view('dashboard.properties.index');
-        })->name('properties.index');
-        ############################### End of Properties Routes ############################################
-
-        ############################### Start of Buildings Routes ############################################
-        Route::get('buildings', function () {
-            return view('dashboard.buildings.index');
-        })->name('buildings.index');
-        ############################### End of Buildings Routes ############################################
-
-        ############################### Start of Property Roles Routes ############################################
-        Route::get('property-roles', function () {
-            return view('dashboard.property-roles.index');
-        })->name('property-roles.index');
-        ############################### End of Property Roles Routes ############################################
-
         ############################### settings Routes ############################################
         Route::get('settings',            [SettingsController::class, 'genralSetting'])->middleware('can:settings')->name('settings');
         ############################### End settings Routes ############################################
