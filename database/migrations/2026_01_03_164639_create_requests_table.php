@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
             
             $table->enum('type', ['leave', 'excuse', 'expense', 'missing_punch'])->default('leave');
-            $table->unsignedBigInteger('leave_type_id');
+            $table->unsignedBigInteger('leave_type_id')->nullable();
             $table->foreign('leave_type_id')->references('id')->on('leave_types')->nullOnDelete();
             
             $table->string('title')->nullable();
@@ -33,6 +33,11 @@ return new class extends Migration
             $table->datetime('reviewed_at')->nullable();
             $table->text('rejection_reason')->nullable();
             $table->timestamps();
+            
+            // Indexes for performance
+            $table->index('status');
+            $table->index('type');
+            $table->index(['employee_id', 'status']);
         });
     }
 

@@ -24,7 +24,6 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('admins')->nullOnDelete();
 
             $table->enum('status', ['scheduled', 'completed', 'cancelled'])->default('scheduled');
-            $table->datetime('created_at')->nullable();
             $table->timestamps();
         });
     }

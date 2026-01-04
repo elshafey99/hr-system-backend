@@ -24,6 +24,12 @@ return new class extends Migration
             $table->string('file_path');
             $table->enum('status', ['active', 'expired', 'terminated'])->default('active');
             $table->timestamps();
+            $table->softDeletes();
+            
+            // Indexes for performance
+            $table->index('contract_number');
+            $table->index('status');
+            $table->index(['employee_id', 'status']);
         });
     }
 

@@ -17,15 +17,19 @@ return new class extends Migration
             $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
             $table->date('date');
             $table->datetime('check_in_time');
-            $table->datetime('check_out_time');
-            $table->decimal('check_in_lat', 10, 8);
-            $table->decimal('check_in_lng', 11, 8);
-            $table->decimal('check_out_lat', 10, 8);
-            $table->decimal('check_out_lng', 11, 8);
+            $table->datetime('check_out_time')->nullable();
+            $table->decimal('check_in_lat', 10, 8)->nullable();
+            $table->decimal('check_in_lng', 11, 8)->nullable();
+            $table->decimal('check_out_lat', 10, 8)->nullable();
+            $table->decimal('check_out_lng', 11, 8)->nullable();
             $table->integer('delay_minutes')->default(0);
             $table->enum('status', ['present', 'absent', 'late', 'early_leave'])->default('present');
             $table->text('notes')->nullable();
             $table->timestamps();
+            
+            // Indexes for performance
+            $table->index('date');
+            $table->index(['employee_id', 'date']);
         });
     }
 

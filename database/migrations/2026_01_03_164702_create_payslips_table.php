@@ -25,6 +25,10 @@ return new class extends Migration
             $table->enum('status', ['draft', 'published'])->default('published');
             $table->datetime('published_at')->nullable();
             $table->timestamps();
+            
+            // Indexes for performance
+            $table->index(['employee_id', 'month', 'year']);
+            $table->index('status');
         });
     }
 

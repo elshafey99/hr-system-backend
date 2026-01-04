@@ -22,6 +22,9 @@ return new class extends Migration
             $table->enum('status', ['pending', 'accepted', 'declined'])->default('pending');
             $table->datetime('responded_at')->nullable();
             $table->timestamps();
+            
+            // Unique constraint to prevent duplicate attendees
+            $table->unique(['meeting_id', 'employee_id']);
         });
     }
 

@@ -24,6 +24,11 @@ return new class extends Migration
             $table->datetime('issued_at')->nullable();
             $table->enum('status', ['active', 'objected', 'resolved'])->default('active');
             $table->timestamps();
+            $table->softDeletes();
+            
+            // Indexes for performance
+            $table->index('status');
+            $table->index(['employee_id', 'status']);
         });
     }
 

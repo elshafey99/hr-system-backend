@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->id();
-            $table->json('name');
-            $table->unsignedBigInteger('manager_id')->nullable();
-            $table->boolean('is_active')->default(1);
-            $table->timestamps();
+        Schema::table('departments', function (Blueprint $table) {
+            $table->foreign('manager_id')->references('id')->on('employees')->nullOnDelete();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::table('departments', function (Blueprint $table) {
+            $table->dropForeign(['manager_id']);
+        });
     }
 };

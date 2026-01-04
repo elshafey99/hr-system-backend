@@ -48,7 +48,21 @@ return new class extends Migration
             $table->decimal('basic_salary', 10, 2)->nullable();
             $table->date('hire_date')->nullable();
             $table->enum('status', ['active', 'inactive' ,'terminated'])->default('active');
+            
+            // Authentication fields
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamp('last_login_at')->nullable();
+            $table->string('fcm_token')->nullable()->comment('Firebase Cloud Messaging token for push notifications');            
             $table->timestamps();
+            $table->softDeletes();
+            
+            // Indexes for performance
+            $table->index('employee_number');
+            $table->index('email');
+            $table->index('status');
+            $table->index('phone');
         });
     }
 

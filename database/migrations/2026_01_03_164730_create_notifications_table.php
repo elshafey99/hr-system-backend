@@ -23,6 +23,9 @@ return new class extends Migration
             $table->boolean('is_read')->default(0);
             $table->datetime('read_at')->nullable();
             $table->timestamps();
+            
+            // Indexes for performance
+            $table->index(['employee_id', 'is_read']);
         });
     }
 
