@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('otps', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
             
             $table->string('code');
             $table->enum('purpose', ['password_reset', 'phone_verify'])->default('password_reset');
@@ -32,3 +32,4 @@ return new class extends Migration
         Schema::dropIfExists('otps');
     }
 };
+

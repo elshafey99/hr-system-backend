@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('meeting_attendees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('meeting_id');
+            $table->unsignedBigInteger('meeting_id')->nullable();
             $table->foreign('meeting_id')->references('id')->on('meetings')->nullOnDelete();
             
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
             
             $table->enum('status', ['pending', 'accepted', 'declined'])->default('pending');
             $table->datetime('responded_at')->nullable();
@@ -36,3 +36,4 @@ return new class extends Migration
         Schema::dropIfExists('meeting_attendees');
     }
 };
+

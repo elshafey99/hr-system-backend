@@ -14,10 +14,20 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            // Admin seeders
             RoleSeeder::class,
             AdminSeeder::class,
             SettingsSeeder::class,
-            UserSeeder::class,
+            
+            // HR System Lookup Tables (must be before EmployeeSeeder)
+            NationalitySeeder::class,
+            PositionSeeder::class,
+            DepartmentSeeder::class,
+            WorkLocationSeeder::class,
+            WorkScheduleSeeder::class,
+            
+            // HR System Employees
+            EmployeeSeeder::class,
         ]);
     }
 }

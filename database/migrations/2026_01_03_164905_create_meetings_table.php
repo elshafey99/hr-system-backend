@@ -20,7 +20,7 @@ return new class extends Migration
             $table->datetime('end_time');
             $table->string('location');
 
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('admins')->nullOnDelete();
 
             $table->enum('status', ['scheduled', 'completed', 'cancelled'])->default('scheduled');
@@ -36,3 +36,4 @@ return new class extends Migration
         Schema::dropIfExists('meetings');
     }
 };
+

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('attendance_records', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
             $table->date('date');
             $table->datetime('check_in_time');
             $table->datetime('check_out_time')->nullable();
@@ -41,3 +41,4 @@ return new class extends Migration
         Schema::dropIfExists('attendance_records');
     }
 };
+

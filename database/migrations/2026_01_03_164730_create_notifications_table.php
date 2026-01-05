@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
             
             $table->string('title');
             $table->text('body');
@@ -37,3 +37,4 @@ return new class extends Migration
         Schema::dropIfExists('notifications');
     }
 };
+

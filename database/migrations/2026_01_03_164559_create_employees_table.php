@@ -24,25 +24,25 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->date('date_of_birth');
             $table->string('marital_status');
-            $table->unsignedBigInteger('nationality_id');
+            $table->unsignedBigInteger('nationality_id')->nullable();
             $table->foreign('nationality_id')->references('id')->on('nationalities')->nullOnDelete();
           
-            $table->unsignedBigInteger('department_id');
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments')->nullOnDelete();
           
-            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('position_id')->nullable();
             $table->foreign('position_id')->references('id')->on('positions')->nullOnDelete();
           
-            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->foreign('project_id')->references('id')->on('projects')->nullOnDelete();
           
-            $table->unsignedBigInteger('manager_id');
+            $table->unsignedBigInteger('manager_id')->nullable();
             $table->foreign('manager_id')->references('id')->on('employees')->nullOnDelete();
           
-            $table->unsignedBigInteger('work_location_id');
+            $table->unsignedBigInteger('work_location_id')->nullable();
             $table->foreign('work_location_id')->references('id')->on('work_locations')->nullOnDelete();
           
-            $table->unsignedBigInteger('work_schedule_id');
+            $table->unsignedBigInteger('work_schedule_id')->nullable();
             $table->foreign('work_schedule_id')->references('id')->on('work_schedules')->nullOnDelete();
           
             $table->decimal('basic_salary', 10, 2)->nullable();
@@ -54,7 +54,8 @@ return new class extends Migration
             $table->timestamp('phone_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamp('last_login_at')->nullable();
-            $table->string('fcm_token')->nullable()->comment('Firebase Cloud Messaging token for push notifications');            
+            $table->string('fcm_token')->nullable()->comment('Firebase Cloud Messaging token for push notifications');
+            $table->enum('device_type', ['android', 'ios', 'web'])->nullable();
             $table->timestamps();
             $table->softDeletes();
             
@@ -74,3 +75,4 @@ return new class extends Migration
         Schema::dropIfExists('employees');
     }
 };
+

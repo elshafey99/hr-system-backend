@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
            
             $table->string('contract_number');
             $table->enum('type', ['permanent', 'temporary', 'probation'])->default('permanent');
@@ -41,3 +41,4 @@ return new class extends Migration
         Schema::dropIfExists('contracts');
     }
 };
+

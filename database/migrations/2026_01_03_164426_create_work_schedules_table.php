@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('grace_period')->nullable();
             $table->time('break_start')->nullable();
             $table->time('break_end')->nullable();
-            $table->json('working_days')->default('[]');
+            $table->json('working_days')->nullable();
             $table->timestamps();
         });
     }
@@ -32,3 +32,4 @@ return new class extends Migration
         Schema::dropIfExists('work_schedules');
     }
 };
+

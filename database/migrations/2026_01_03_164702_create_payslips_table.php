@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('payslips', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
             
             $table->tinyInteger('month')->comment('Month (1-12)');
             $table->year('year')->comment('Year');
@@ -40,3 +40,4 @@ return new class extends Migration
         Schema::dropIfExists('payslips');
     }
 };
+

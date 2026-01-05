@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('warnings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('issued_by');
+            $table->unsignedBigInteger('issued_by')->nullable();
             $table->foreign('issued_by')->references('id')->on('admins')->nullOnDelete();
 
             $table->enum('type', ['verbal', 'written', 'final'])->default('verbal');
@@ -40,3 +40,4 @@ return new class extends Migration
         Schema::dropIfExists('warnings');
     }
 };
+

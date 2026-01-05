@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelete();
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
             
             $table->enum('type', ['id_card', 'passport', 'license', 'certificate', 'other'])->default('id_card');
             $table->string('title')->nullable();
             $table->string('file_path')->nullable();
             $table->date('expiry_date')->nullable();
-            $table->unsignedBigInteger('uploaded_by');
+            $table->unsignedBigInteger('uploaded_by')->nullable();
             $table->foreign('uploaded_by')->references('id')->on('admins')->nullOnDelete();
             $table->timestamps();
         });
@@ -35,3 +35,4 @@ return new class extends Migration
         Schema::dropIfExists('documents');
     }
 };
+
